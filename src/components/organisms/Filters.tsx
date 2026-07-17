@@ -45,6 +45,7 @@ export default function Filters() {
         <div className="form-group">
           <label htmlFor="search">Search</label>
           <input
+            name="Search"
             type="text"
             placeholder="Relax"
             onChange={(event) => setSearch(event.target.value)}
