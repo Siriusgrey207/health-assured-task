@@ -1,4 +1,4 @@
-import Resources from "./pages/Resources";
+import Resources from "./pages/ResourcesPage/ResourcesPage";
 
 export default function App() {
   return (
