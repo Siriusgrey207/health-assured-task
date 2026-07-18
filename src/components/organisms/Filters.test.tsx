@@ -10,3 +10,5 @@ describe("Tests for the Filters component", () => {
     expect(document.activeElement).toBe(input);
   });
 });
+
+// To do, test the addition of the query params after click.

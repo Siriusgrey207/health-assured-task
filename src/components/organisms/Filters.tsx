@@ -1,17 +1,42 @@
 import { type SubmitEvent, useState } from "react";
 import { Title, Panel, Paragraph } from "../atoms";
 
-// Sorting options for the resources
-const sortingOptions: string[] = ["newest", "oldest"];
+type SortOption = {
+  value: string;
+  label: string;
+};
+
+const DEFAULT_SORT: string = "newest";
+const sortingOptions: SortOption[] = [
+  {
+    value: DEFAULT_SORT,
+    label: "Newest First",
+  },
+  {
+    value: "oldest",
+    label: "Oldest First",
+  },
+];
 
 export default function Filters() {
   const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState<string>("");
+  const [sort, setSort] = useState<string>(DEFAULT_SORT);
 
   // Handles the submission of the form and updated the query parameters.
   function handleSubmit(e: SubmitEvent) {
     e.preventDefault();
-    const queryParams = new URLSearchParams({ search: search, sort: sort });
+
+    const queryParams = new URLSearchParams();
+    const trimmedSearch = search.trim();
+    if (trimmedSearch !== "") {
+      queryParams.set("search", trimmedSearch);
+    }
+    if (sort !== "") {
+      queryParams.set("sort", sort);
+    }
+
+    // Update the history stack accordingly.
+    if (queryParams.size == 0) return;
     window.history.pushState({}, "", "?" + queryParams.toString());
   }
 
@@ -24,17 +49,18 @@ export default function Filters() {
       <form onSubmit={handleSubmit}>
         {/* Sorting */}
         <div className="form-group">
-          <label htmlFor="sort">Sort</label>
+          <label htmlFor="sort-select">Sort</label>
           <select
             name="sort"
-            id="sort"
+            id="sort-select"
             onChange={(event) => setSort(event.target.value)}
             value={sort}
           >
-            {sortingOptions.map((option) => {
+            {sortingOptions.map((option: SortOption) => {
+              const { value, label } = option;
               return (
-                <option key={option} value={option}>
-                  {option}
+                <option key={value} value={value}>
+                  {label}
                 </option>
               );
             })}
@@ -43,10 +69,11 @@ export default function Filters() {
 
         {/* Searching */}
         <div className="form-group">
-          <label htmlFor="search">Search</label>
+          <label htmlFor="search-input">Search</label>
           <input
             autoFocus
             name="Search"
+            id="search-input"
             type="text"
             placeholder="Relax"
             onChange={(event) => setSearch(event.target.value)}
