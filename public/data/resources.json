@@ -10,6 +10,26 @@
     "date_uploaded": "2025-07-10"
   },
   {
+    "id": "019",
+    "category": "Podcasts",
+    "title": "Calm Moments",
+    "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
+    "tags": ["mindfulness", "relaxation"],
+    "duration": 25,
+    "description": "A calming podcast focused on mindfulness techniques for daily life.",
+    "date_uploaded": "2025-07-10"
+  },
+  {
+    "id": "027",
+    "category": "Podcasts",
+    "title": "Midfull Moments",
+    "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
+    "tags": ["mindfulness"],
+    "duration": 25,
+    "description": "A calming podcast focused on mindfulness techniques for daily life.",
+    "date_uploaded": "2025-07-10"
+  },
+  {
     "id": "002",
     "category": "Articles",
     "title": "The Science of Sleep",
