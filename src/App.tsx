@@ -1,9 +1,10 @@
+import { Routes, Route } from "react-router-dom";
 import Resources from "./pages/ResourcesPage/ResourcesPage";
 
 export default function App() {
   return (
-    <div>
-      <Resources />
-    </div>
+    <Routes>
+      <Route path="/" element={<Resources />} />
+    </Routes>
   );
 }

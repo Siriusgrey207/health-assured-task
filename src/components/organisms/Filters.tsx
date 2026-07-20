@@ -1,6 +1,8 @@
 import { type SubmitEvent, useState } from "react";
 import { Title, Panel, Paragraph } from "../atoms";
 
+import { useSearchParams } from "react-router-dom";
+
 type SortOption = {
   value: string;
   label: string;
@@ -22,8 +24,10 @@ export default function Filters() {
   const [search, setSearch] = useState<string>("");
   const [sort, setSort] = useState<string>(DEFAULT_SORT);
 
+  const [_, setSearchParams] = useSearchParams();
+
   // Handles the submission of the form and updated the query parameters.
-  function handleSubmit(e: SubmitEvent) {
+  function handleSubmit(e: SubmitEvent): void {
     e.preventDefault();
 
     const queryParams = new URLSearchParams();
@@ -31,13 +35,9 @@ export default function Filters() {
     if (trimmedSearch !== "") {
       queryParams.set("search", trimmedSearch);
     }
-    if (sort !== "") {
-      queryParams.set("sort", sort);
-    }
 
-    // Update the history stack accordingly.
-    if (queryParams.size == 0) return;
-    window.history.pushState({}, "", "?" + queryParams.toString());
+    queryParams.set("sort", sort);
+    setSearchParams(queryParams);
   }
 
   return (
