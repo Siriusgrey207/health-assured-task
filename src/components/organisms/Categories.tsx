@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { useResources } from "../../hooks/useResources";
 
 export default function Categories() {
-  const { isLoading, error, isError, data } = useResources();
+  const { isLoading, error, isError, data: resources } = useResources();
+
+  // After resources have been fetched, they need to be grouped by categories and sorted.
+  useEffect(() => {}, []);
 
   if (isLoading) {
     return (
@@ -21,7 +25,7 @@ export default function Categories() {
 
   return (
     <section data-testid="categories-container">
-      Categories should load here
+      Categories should go here
     </section>
   );
 }
