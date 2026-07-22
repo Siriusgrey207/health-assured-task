@@ -2,6 +2,8 @@ import { useSearchParams } from "react-router-dom";
 import type { Resource, Sort } from "../../types/Resource";
 import { useResources } from "../../hooks/useResources";
 import { prepareResources } from "../../utils/prepareResources";
+import { LoadingSpinner } from "../atoms/LoadingSpinner";
+import { InfoIcon } from "../atoms/index";
 
 export default function Categories() {
   const { isLoading, error, isError, data: resources = [] } = useResources();
@@ -16,8 +18,12 @@ export default function Categories() {
 
   if (isLoading) {
     return (
-      <section data-testid="spinner-container">
-        <div>Loading...</div>
+      <section
+        data-testid="spinner-container"
+        className="p-5 flex flex-col items-center gap-4"
+      >
+        <LoadingSpinner />
+        <span className="text-secondary">Loading Resources...</span>
       </section>
     );
   }
@@ -48,7 +54,7 @@ export default function Categories() {
           data-testid="category"
           className="category grid grid-cols-3 gap-4 not-first:mt-7"
         >
-          <div className="category-title col-span-3">{categoryName}</div>
+          <h2 className="category-title col-span-3 text-2xl">{categoryName}</h2>
 
           {resources.map((resource: Resource) => {
             return (
@@ -79,13 +85,14 @@ export default function Categories() {
                   </span>
                   <button
                     type="button"
-                    className="btn btn--green mt-2"
+                    className="btn btn--green btn--info"
                     onClick={() =>
                       alert(
                         "Further work could include the development of this modal."
                       )
                     }
                   >
+                    <InfoIcon />
                     <span>Learn More</span>
                   </button>
                 </div>

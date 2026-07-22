@@ -41,6 +41,9 @@ section {
     span {
       @apply text-[13px] text-white;
     }
+    &.btn--info {
+      @apply mt-3 px-3 gap-1.5;
+    }
   }
   &.btn--search {
     .svg--search {
@@ -53,6 +56,17 @@ section {
       }
     }
   }
+  &.btn--info {
+    svg {
+      @apply duration-200 transform;
+    }
+    &:hover,
+    &:focus {
+      svg {
+        @apply scale-105;
+      }
+    }
+  }
 }
 
 .form-group {
@@ -62,7 +76,7 @@ section {
     @apply border border-solid border-[#c8c8c8] rounded-md text-[14px] px-2 py-1;
   }
   label {
-    @apply text-[14px] mb-1 font-semibold text-black;
+    @apply text-[14px] mb-1 font-medium text-black;
   }
 }
 
@@ -70,7 +84,7 @@ select,
 input {
   @apply outline-none duration-200;
   &:focus {
-    @apply brightness-105;
+    @apply bg-[#f7f7f7];
   }
 }
 

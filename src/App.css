@@ -1,5 +1,0 @@
-@import "tailwindcss";
-
-.category-title {
-  @apply font-semibold text-xl;
-}
