@@ -75,7 +75,7 @@ export default function Categories() {
                     className="btn btn--green mt-2"
                     onClick={() =>
                       alert(
-                        "Further work could include the development of this modal.",
+                        "Further work could include the development of this modal."
                       )
                     }
                   >

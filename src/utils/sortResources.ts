@@ -7,18 +7,17 @@ type SortBy = "newest" | "oldest";
 // sortBy    - The sorting parameter.
 export function sortResources(
   resources: Resource[],
-  sortBy: SortBy = "newest",
+  sortBy: SortBy = "newest"
 ): Resource[] {
   if (resources.length === 0) return [];
 
   // Create a copy of the resouces list to prevent direct mutation of the original array.
   const resourcesCopy = Array.from(resources).sort((a, b) => {
-    const firstDate = new Date(b.date_uploaded);
-    const secondDate = new Date(a.date_uploaded);
+    const aTime = new Date(a.date_uploaded).getTime();
+    const bTime = new Date(b.date_uploaded).getTime();
 
     // Use the Date to sort the resources.
-    if (sortBy === "newest") return firstDate.getDate() - secondDate.getDate();
-    else return secondDate.getDate() - firstDate.getDate();
+    return sortBy === "newest" ? bTime - aTime : aTime - bTime;
   });
 
   return resourcesCopy;

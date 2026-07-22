@@ -10,7 +10,8 @@ describe("Provided a list of resources and a filter string, filter the resources
 
   it("Filter resources by title", () => {
     const res = filterResources("daily", mockResourceList);
-    expect(res).toEqual(mockResourceList[0]);
+    expect(res.length).toBe(1);
+    expect(res).toEqual([mockResourceList[0]]);
   });
 
   it("Filter resources by tags", () => {

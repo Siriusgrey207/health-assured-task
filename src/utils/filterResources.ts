@@ -5,5 +5,12 @@ export function filterResources(
   filter: string,
   resources: Resource[]
 ): Resource[] {
-  return [];
+  if (resources.length === 0) return [];
+  const search = filter.toLowerCase();
+
+  return resources.filter(
+    (resource: Resource) =>
+      resource.title.toLowerCase().includes(search) || // Match by title name
+      resource.tags.some((tag) => tag.toLowerCase().includes(search)) // Ot match by tag
+  );
 }
