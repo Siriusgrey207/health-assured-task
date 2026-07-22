@@ -11,6 +11,6 @@ export function useResources() {
 
   return useQuery({
     queryKey: ["resources", search, sort],
-    queryFn: () => fetchResources(search, sort),
+    queryFn: () => fetchResources(),
   });
 }

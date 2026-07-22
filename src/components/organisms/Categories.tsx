@@ -1,17 +1,23 @@
-import type { Resource } from "../../types/Resource";
+import { useSearchParams } from "react-router-dom";
+import type { Resource, Sort } from "../../types/Resource";
 import { useResources } from "../../hooks/useResources";
-import { groupResourcesByCategory } from "../../utils/groupResourcesByCategory";
+import { prepareResources } from "../../utils/prepareResources";
 
 export default function Categories() {
-  const { isLoading, error, isError, data: resources } = useResources();
+  const { isLoading, error, isError, data: resources = [] } = useResources();
+  const [searchParams] = useSearchParams();
 
-  // After resources have been fetched, they need to be grouped by categories and sorted.
-  const categories = resources ? groupResourcesByCategory(resources) : {};
+  const search = searchParams.get("search") ?? "";
+  const sort = (searchParams.get("sort") as Sort) ?? "newest";
+  const categories: Record<string, Resource[]> = prepareResources(resources, {
+    filter: search,
+    sort,
+  });
 
   if (isLoading) {
     return (
-      <section>
-        <div data-testid="spinner-container">Loading...</div>
+      <section data-testid="spinner-container">
+        <div>Loading...</div>
       </section>
     );
   }
@@ -28,17 +34,18 @@ export default function Categories() {
 
   if (Object.keys(categories).length === 0) {
     return (
-      <section data-testid="no-categories-container">
+      <section data-testid="categories-container">
         No categories to display
       </section>
     );
   }
 
   return (
-    <section data-testid="categories-container block">
+    <section data-testid="categories-container">
       {Object.entries(categories).map(([categoryName, resources]) => (
         <div
           key={categoryName}
+          data-testid="category"
           className="category grid grid-cols-3 gap-4 not-first:mt-7"
         >
           <div className="category-title col-span-3">{categoryName}</div>

@@ -2,20 +2,20 @@ import { type Resource } from "../types/Resource";
 import { describe, expect, it } from "vitest";
 import { filterResources } from "../utils/filterResources";
 
-describe("Provided a list of resources and a filter string, filter the resources based on the title and tags.", () => {
+describe("Provided a list of resources and a filter string, filter the resources.", () => {
   it("Provided an empty list of resources, an empty list should be returned.", () => {
-    const res = filterResources("relax", []);
+    const res = filterResources([], "relax");
     expect(res.length).toBe(0);
   });
 
   it("Filter resources by title", () => {
-    const res = filterResources("daily", mockResourceList);
+    const res = filterResources(mockResourceList, "daily");
     expect(res.length).toBe(1);
     expect(res).toEqual([mockResourceList[0]]);
   });
 
   it("Filter resources by tags", () => {
-    const res = filterResources("testTag", mockResourceList);
+    const res = filterResources(mockResourceList, "testTag");
     expect(res.length).toBe(2);
     expect(res).toEqual([mockResourceList[1], mockResourceList[2]]);
   });

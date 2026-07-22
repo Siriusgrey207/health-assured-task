@@ -1,13 +1,11 @@
-import { type Resource } from "../types/Resource";
-
-type SortBy = "newest" | "oldest";
+import type { Resource, Sort } from "../types/Resource";
 
 // The following function sorts a list of resources based on date (newest first or oldest first)
 // resources - The list of resources to be sorted.
 // sortBy    - The sorting parameter.
 export function sortResources(
   resources: Resource[],
-  sortBy: SortBy = "newest"
+  sortBy: Sort = "newest"
 ): Resource[] {
   if (resources.length === 0) return [];
 

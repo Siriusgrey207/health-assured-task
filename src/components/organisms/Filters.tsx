@@ -29,8 +29,8 @@ export default function Filters() {
   // Handles the submission of the form and updated the query parameters.
   function handleSubmit(e: SubmitEvent): void {
     e.preventDefault();
-
     const queryParams = new URLSearchParams();
+
     const trimmedSearch = search.trim();
     if (trimmedSearch !== "") {
       queryParams.set("search", trimmedSearch);

@@ -16,3 +16,5 @@ export type Resource = {
   description: string;
   date_uploaded: string;
 };
+
+export type Sort = "newest" | "oldest";

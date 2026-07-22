@@ -2,8 +2,8 @@ import type { Resource } from "../types/Resource";
 
 // Responsible for filtering the resources using the title and the tags.
 export function filterResources(
-  filter: string,
-  resources: Resource[]
+  resources: Resource[],
+  filter: string
 ): Resource[] {
   if (resources.length === 0) return [];
   const search = filter.toLowerCase();
