@@ -7,7 +7,7 @@ type SortBy = "newest" | "oldest";
 // sortBy    - The sorting parameter.
 export function sortResources(
   resources: Resource[],
-  sortBy: SortBy,
+  sortBy: SortBy = "newest",
 ): Resource[] {
   if (resources.length === 0) return [];
 

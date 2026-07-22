@@ -2,7 +2,7 @@
   {
     "id": "001",
     "category": "Podcasts",
-    "title": "Mindful Moments",
+    "title": "Oldest Podcast",
     "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
     "tags": ["wellbeing", "mindfulness", "relaxation"],
     "duration": 25,
@@ -12,7 +12,7 @@
   {
     "id": "019",
     "category": "Podcasts",
-    "title": "Calm Moments",
+    "title": "Newest Podcast",
     "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
     "tags": ["mindfulness", "relaxation"],
     "duration": 25,
@@ -22,7 +22,7 @@
   {
     "id": "027",
     "category": "Podcasts",
-    "title": "Midfull Moments",
+    "title": "Second-newest podcast",
     "thumbnail": "https://www.datocms-assets.com/93767/1753971746-photo.jpg",
     "tags": ["mindfulness"],
     "duration": 25,

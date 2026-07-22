@@ -2,9 +2,82 @@
 
 @theme {
   --color-primary: #000000;
-  --color-secondary: #257a49;
+  --color-secondary: #3ca86a;
+
+  --color-primary-background: #f4f4f4;
+  --color-muted: #8c8c8c;
 }
 
 body {
   font-family: "Inter", sans-serif;
+}
+
+button {
+  @apply cursor-pointer duration-200 tracking-wide font-semibold;
+  &:hover,
+  &:focus {
+    @apply brightness-110;
+  }
+}
+
+section {
+  &:not(:first-child) {
+    @apply mt-7;
+  }
+}
+
+.category-title {
+  @apply relative;
+  &:before {
+    content: "";
+    @apply block absolute -bottom-1 left-0 w-6 h-1 bg-secondary rounded-md;
+  }
+}
+
+.btn {
+  @apply flex items-center gap-1;
+  &.btn--green {
+    @apply bg-secondary rounded-lg px-4 py-1.5 flex items-center;
+    span {
+      @apply text-[13px] text-white;
+    }
+  }
+  &.btn--search {
+    .svg--search {
+      @apply transition-transform duration-400;
+    }
+    &:hover,
+    &:focus {
+      .svg--search {
+        @apply rotate-[-15deg];
+      }
+    }
+  }
+}
+
+.form-group {
+  @apply flex flex-col min-w-[230px];
+  input,
+  select {
+    @apply border border-solid border-[#c8c8c8] rounded-md text-[14px] px-2 py-1;
+  }
+  label {
+    @apply text-[14px] mb-1 font-semibold text-black;
+  }
+}
+
+select,
+input {
+  @apply outline-none duration-200;
+  &:focus {
+    @apply brightness-105;
+  }
+}
+
+select {
+  @apply cursor-pointer;
+}
+
+.svg {
+  @apply fill-white w-5 h-5;
 }

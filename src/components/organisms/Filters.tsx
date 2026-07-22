@@ -1,5 +1,5 @@
-import { type SubmitEvent, useState } from "react";
-import { Title, Panel, Paragraph } from "../atoms";
+import { type SubmitEvent, useState, useEffect } from "react";
+import { Title, Panel, Paragraph, SearchIcon } from "../atoms";
 
 import { useSearchParams } from "react-router-dom";
 
@@ -46,7 +46,7 @@ export default function Filters() {
       <Paragraph text="Your one stop for health assured curated resources." />
 
       {/* Form for searching and sorting the responses */}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex items-end gap-x-5">
         {/* Sorting */}
         <div className="form-group">
           <label htmlFor="sort-select">Sort</label>
@@ -82,7 +82,10 @@ export default function Filters() {
         </div>
 
         {/* Submission */}
-        <button type="submit">Search</button>
+        <button type="submit" className="btn btn--green btn--search">
+          <SearchIcon />
+          <span>Search</span>
+        </button>
       </form>
     </Panel>
   );
