@@ -6,6 +6,7 @@
 
   --color-primary-background: #f4f4f4;
   --color-muted: #595959;
+  --color-danger: #ff5757;
 }
 
 body {
@@ -94,4 +95,18 @@ select {
 
 .svg {
   @apply fill-white w-5 h-5;
+}
+
+.error {
+  @apply relative;
+
+  > svg {
+    flex: 0 0 24px;
+  }
+
+  &:before {
+    content: "";
+    @apply absolute h-full w-full rounded-xl border-[2px] border-solid border-[#ffffff36] left-0 top-0
+    pointer-events-none select-none;
+  }
 }

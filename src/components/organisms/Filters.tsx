@@ -1,4 +1,4 @@
-import { type SubmitEvent, useState, useEffect } from "react";
+import { type SubmitEvent, useState } from "react";
 import { Title, Panel, Paragraph, SearchIcon } from "../atoms";
 
 import { useSearchParams } from "react-router-dom";

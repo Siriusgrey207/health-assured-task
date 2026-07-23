@@ -4,6 +4,7 @@ import { useResources } from "../../hooks/useResources";
 import { prepareResources } from "../../utils/prepareResources";
 import { LoadingSpinner } from "../atoms/LoadingSpinner";
 import { InfoIcon } from "../atoms/index";
+import { ErrorMessage } from "../molecules/index";
 
 export default function Categories() {
   const { isLoading, error, isError, data: resources = [] } = useResources();
@@ -33,7 +34,7 @@ export default function Categories() {
       error instanceof Error ? error.message : "There was an error";
     return (
       <section data-testid="error-container">
-        <h6>{errorMessage}</h6>
+        <ErrorMessage message={errorMessage} />
       </section>
     );
   }

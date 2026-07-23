@@ -4,3 +4,4 @@ export { default as Panel } from "./Panel";
 export { default as Paragraph } from "./Paragraph";
 export { default as SearchIcon } from "./SearchIcon";
 export { default as InfoIcon } from "./InfoIcon";
+export { default as AlertIcon } from "./AlertIcon";

@@ -9,8 +9,11 @@ export function useResources() {
   const search = searchParams.get("search") ?? "";
   const sort = searchParams.get("sort") ?? "newest";
 
+  // Can be used to trigger the error screen.
+  const triggerError = searchParams.get("error") === "true";
+
   return useQuery({
-    queryKey: ["resources", search, sort],
-    queryFn: () => fetchResources(),
+    queryKey: ["resources", search, sort, triggerError],
+    queryFn: () => fetchResources(triggerError),
   });
 }
